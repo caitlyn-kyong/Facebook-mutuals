@@ -169,6 +169,58 @@ fn main() {
     println!("Median shortest path length: {}", median_shortest_path_length);
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
 
+    #[test]
+    fn test_bfs() {
+        let social_network = SocialNetwork {
+            edges: hashmap!{
+                0 => hashset!{1, 2},
+                1 => hashset!{0, 3},
+                2 => hashset!{0},
+                3 => hashset!{1},
+            },
+        };
+        let start_node = 0;
+        let bfs_result = social_network.bfs(start_node);
+        // Add your assertions here to validate the BFS result
+        assert_eq!(bfs_result.get(&1), Some(&1)); // Example assertion
+    }
+
+    #[test]
+    fn test_shortest_path() {
+        let social_network = SocialNetwork {
+            edges: hashmap!{
+                0 => hashset!{1, 2},
+                1 => hashset!{0, 3},
+                2 => hashset!{0},
+                3 => hashset!{1},
+            },
+        };
+        let start_node = 0;
+        let end_node = 3;
+        let shortest_path = social_network.shortest_path(start_node, end_node);
+        // Add your assertions here to validate the shortest path result
+        assert_eq!(shortest_path, Some(vec![0, 1, 3])); // Example assertion
+    }
+
+
+    #[test]
+    fn test_median_shortest_path_length() {
+        let social_network = SocialNetwork {
+            edges: hashmap!{
+                0 => hashset!{1, 2},
+                1 => hashset!{0, 3},
+                2 => hashset!{0},
+                3 => hashset!{1},
+            },
+        };
+        let median_shortest_path_length = social_network.median_shortest_path_length();
+        // Add your assertions here to validate the median shortest path length
+        assert_eq!(median_shortest_path_length, 1.0); // Example assertion
+    }
+}
 
 
