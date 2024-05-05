@@ -1,0 +1,9 @@
+[package]
+name = "Project210"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+petgraph = "0.5.1"
+dot = "0.1.4"
+rayon = "1.5.1"
